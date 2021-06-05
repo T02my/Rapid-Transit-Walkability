@@ -8,6 +8,14 @@ function init() {
         }, {
             searchControlProvider: 'yandex#search'
         }),
+
+    	objectManager = new ymaps.ObjectManager();
+	 $.getJSON('moscowline.geojson').done(function (geoJson) {
+            // Добавляем описание объектов в формате JSON в менеджер объектов.
+            objectManager.add(geoJson);
+            // Добавляем объекты на карту.
+            myMap.geoObjects.add(objectManager);
+        });
     /*
     Координаты и наименования станций Московского метрополитена. Названия записаны с сокращением на латинском алфавите.
     Координаты и названия идут по порядку соответственно друг с другом.
@@ -189,7 +197,7 @@ function init() {
     }};
 
     const drawAllCircle = (radius) => {
-    	for (let i = 0, l = collections.length; i < l; i++) {
+    	for (let i = 0; i < collections.length; i++) {
     		collections[i].removeAll();
     		drawCircle(collections[i], stationCoords[i], stationNames[i], radius);
     	};
@@ -197,11 +205,11 @@ function init() {
     }
 
     const drawAllDots = () => {
-    	for (let i = 0, l = dotsCollection.length; i < l; i++) {
-    		drawDots(dotsCollection[i], stationCoords[i], stationNames[i]);
+    	for (let i = 0; i < collections.length; i++) {
+    		drawDots(collections[i], stationCoords[i], stationNames[i]);
     	};
 		dotsClicked = 1;
-		document.querySelector('.map_dots').innerHTML = 'Убрать точки';
+		document.querySelector('.map_dots').innerHTML = 'Убрать точки и круги';
     }
 
     /*
@@ -224,8 +232,11 @@ function init() {
 		if (dotsClicked === 0) {
 			drawAllDots();
 		} else {
+			dotsClicked = 0;
 			document.querySelector('.map_dots').innerHTML = 'Добавить точки';
-			alert('getlost');
+			for (let i = 0, l = collections.length; i < l; i++) {
+    			collections[i].removeAll();
+    		};
 		}
 	 };
 
