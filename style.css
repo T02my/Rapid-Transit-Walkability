@@ -92,12 +92,17 @@ p {
 	display: inline-block;
 }
 */
-.cp-tab input[type="radio"] { display: none; }
+.cp-tab input[type="radio"] {
+	display: none;
+}
+
 .cp-tab-title {
+	display: block;
+	text-align: center;
 	padding: 5px 10px;
 	border: 1px solid #bbb;
 	border-radius: 10px;
-		font-size: 18px;
+	font-size: 18px;
 }
 
 cp-tab-content:first-child {

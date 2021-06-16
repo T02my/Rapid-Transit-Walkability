@@ -267,7 +267,7 @@ function init() {
             drawAllDots();
         } else {
             dotsClicked = 0;
-            document.querySelector('.map_dots').innerHTML = 'Отметить станции точками';
+            document.querySelector('.map_dots').innerHTML = 'Отметить станции точками   ';
             for (let i = 0, l = collections.length; i < l; i++) {
                 collections[i].removeAll();
             };
