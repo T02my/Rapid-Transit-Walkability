@@ -12,7 +12,7 @@
     </header>
     <section>
         <div class="container_notbtsp">
-            <aside class="metro-map">
+            <main class="metro-map">
                 <div class="metro-map__yandex">
                     <div id="map"></div> 
                 </div>
@@ -22,13 +22,14 @@
                             <input type="radio" id="cp-tab1" name="cp-tab-group" checked>
                             <label for="cp-tab1" class="cp-tab-title">Описание</label> 
                             <div class="cp-tab-content">
-                                <p>Добро пожаловать!</p>
-                                <p>Эта карта позволяет оценить пешеходную доступность станций метро, МЦК и МЦД, что может быть полезно при выборе жилья, места работы, посещения какого-либо заведения и т.д.</p>
-                                <p>Для справки.</p>
+                                <h2>Добро пожаловать!</h2>
+                                <p>Эта карта позволяет оценить пешеходную доступность станций метро, МЦК и МЦД, что может быть полезно при выборе жилья, места работы, посещения какого-либо заведения, для каких-либо урбанистических исследований и т.д.</p>
+                                <p>Данные по открытым станциям актуальны на 15 июня 2021 года.</p>
+                                <h3>Для справки</h3>
                                 <p>Официально <a href="https://www.mos.ru/upload/documents/files/3917/2015-0945-pp.pdf" target="_blank">Правительством Москвы</a> принято считать <span class="text-underline">пешеходную доступность</span> станций метро следующим образом:</p>
                                     <ul>
-                                        <li>в центральной части города — 500 метров.</li>
-                                        <li>в пределах МКАД — 700 метров.</li>
+                                        <li>В центральной части города — 500 метров.</li>
+                                        <li>В пределах МКАД — 700 метров.</li>
                                     </ul>
 
                                 <p>Транспортная доступность станций метро с помощью <span class="text-underline">наземного общественного транспорта</span> (<i>автобусы, электробусы, трамваи, маршрутное такси и т.д.</i>) составляет 2200 метров.</p>
@@ -36,10 +37,10 @@
                                 Неофициально, среди обычных граждан принято считать пешую доступность в 5, 10, 15 минутах ходьбы или на транспорте до входа в метро. 
 
                                 <p>Учитывая среднюю скорость ходьбы человека в 70-80 шагов в минуту, т.е. ~5 км/час (~83 м/мин.), получаются такие данные:</p>
-                                <table>
+                                <table class="cp-tab1-table">
                                     <tr>
-                                        <td>Время в пути до метро</td>
-                                        <td>Радиус</td>
+                                        <td>Время в пути, мин.</td>
+                                        <td>Радиус, м.</td>
                                     </tr>
                                     <tr>
                                         <td>до 5 минут</td>
@@ -54,7 +55,7 @@
                                         <td>1100-1300</td>
                                     </tr>
                                 </table>
-                            </div>
+
                         </div> 
                         <div class="cp-tab">
                             <input type="radio" id="cp-tab2" name="cp-tab-group">
@@ -62,7 +63,7 @@
                             <div class="cp-tab-content">  
                                 <label for="map_radius">Радиус:</label>              
                                 <input class="map_radius" name="map_radius" placeholder="900" type="number">
-                                <label for="map_radius" class="map_radius-help">?</label>
+                                <label for="map_radius" class="map_radius-help"><sup>?</sup></label>
                                 <div class="map_radius-preset">
                                     <button class="map_radius-btn">500</button>
                                     <button class="map_radius-btn">700</button>
@@ -70,26 +71,40 @@
                                     <button class="map_radius-btn">1300</button>
                                     <button class="map_radius-btn">2200</button>
                                 </div>
-                                <button class="map_dots">Добавить точки</button>
+                                <hr>
+                                <label for="map_fillOpacity">Прозрачность содержимого круга:</label>              
+                                <input class="map_fillOpacity" name="map_fillOpacity" placeholder="0.3" type="number">
+                                <label for="map_strokeOpacity">Прозрачность обводки круга:</label>          
+                                <input class="map_strokeOpacity" name="map_strokeOpacity" placeholder="0.5" type="number">
+                                <hr>
+                                <p>Свойства: <button class="map_draggableCircle">Перетаскивать круги</button></p>
+                                <hr>
+                                <button class="map_dots">Отметить станции точками</button><br>
                             </div>
                         </div>
                         <div class="cp-tab">
                             <input type="radio" id="cp-tab3" name="cp-tab-group">
-                            <label for="cp-tab3" class="cp-tab-title">Дополнительно</label> 
-                            <div class="cp-tab-content2">
-                                
+                            <label for="cp-tab3" class="cp-tab-title">Инструкция</label> 
+                            <div class="cp-tab-content">
+                                <h3>Инструкция</h3>
+                                <p ><span class="text-only-on-pc">Слева</span><span class="text-only-on-mobile">Сверху</span> представлена карта Москвы с нанесённым кругами вокруг точек размещения станций (по умолчанию отключены).</p>
+                                <p>Отметки ставились по единственному выходу или посередине между двумя противоположными выходами (южный/северный; западный/восточный).</p>
+                                <h3>Дополнительно</h3>
+                                <p>Важно иметь в виду, что не всегда можно дойти до ближайшего входа метро в пределах указанного времени или расстояния. <br>Могут быть естественные преграды (река, водоём и т.д.) или частная собственность (здание, забор и т.д.), которую нужно обходить.</p>
+                                <p>В Москве таких мест немного, но они есть. Например, на 2021-2022 актуальна ситуация с м. Печатники, когда соседние жилые дома с восточной стороны от Курского направления МЖД не могут попасть на эту станцию метро. <span class="text-underline">Карта такое не учитывает</span> <i>(пока)</i>.</p>
                             </div> 
                         </div> 
                     </div>    
                 </div>
-            </aside>
+            </main>
         </div>
        
     </section>
-    <footer></footer>
+    <footer class="footer__copyrights-text">
+    	<p>Автор: <a href="https://vk.com/dukeelector">Владислав Панкратов</a> (T02my, <a href="https://github.com/T02my/Rapid-Transit-Walkability">GitHub</a>). Для отображения используется <a href="https://yandex.ru/dev/maps/">API Яндекс.Карт</a>.</p>
+    </footer>
     
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?apikey=6e4f2d8f-5ad7-406b-bf64-ba2b6f540223&lang=ru_RU" type="text/javascript"></script>
 <script src="circle.js" type="text/javascript"></script>
 </html>

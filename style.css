@@ -14,6 +14,14 @@ input[type="number"]:focus {
   -moz-appearance: number-input;
 }
 
+div p:first-child, div h2:first-child, div h3:first-child {
+	margin: 5px 0 0 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
 /* main code */
 
 body  {
@@ -24,15 +32,37 @@ header h1 {
 	font-size: 36px;
 	font-weight: 500;
 	line-height: 1.1;
+	position: relative;
 	text-align: center;
 }
+
+header h1:after {
+	content: '';
+	background-image: url(img/mosmetro/mos-metro-logo.svg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height: 70px;
+	position: absolute;
+	margin: 0 15px;
+	width: 58px;
+	top: 0;
+}
+
+h1, h2, h3 {
+	text-indent: 1rem;
+}
+
+p {
+	text-indent: 1rem;
+}
+
 .metro-map {
 	display: flex;
 }
 
 .metro-map__yandex {
 	width: 70%;
-	height: 980px;
+	height: 960px;
 }
 
 #map {
@@ -41,33 +71,48 @@ header h1 {
 
 .control-panel {
 	background: #f5f5f5;
-	font-size: 16px;
 	padding: 0px 10px;
 	width: calc(30% - 1px);
 }
 
 .control-panel__bar {
-	display: flex; 
+	display: flex;
 	justify-content: space-evenly;
 	position: relative;
 }
+
+.cp-tab, .cp-tab-title {
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+}
+
+/*
 .cp-tab, .cp-tab-title {
 	display: inline-block;
 }
+*/
 .cp-tab input[type="radio"] { display: none; }
 .cp-tab-title {
-	background: #ccc;
 	padding: 5px 10px;
-	border: 1px solid #666;
-	border-bottom: none;
+	border: 1px solid #bbb;
+	border-radius: 10px;
+		font-size: 18px;
 }
+
+cp-tab-content:first-child {
+	margin: 40px 0 0 0;
+}
+
 .cp-tab-content {
-	position: absolute;
-	border: 1px solid #666;
-	padding: 10px;
-	left: 0;
-	width: calc(100% - 20px);
 	display: none;
+	border: 1px solid #bbbbbb;
+	border-radius: 15px;
+	left: 0;
+	margin: 40px 0 0 0;
+	padding: 10px;
+	position: absolute;
+	width: 100%;
 }
 .cp-tab :checked + .cp-tab-title {
 	position: relative;
@@ -79,13 +124,55 @@ header h1 {
 	display: block;
 }
 
+
+.cp-tab1-table {
+	border: 1px black solid;
+	border-radius: 10px;
+	margin: 0 auto;
+}
+
+.cp-tab1-table td {
+	padding: 2px 10px;
+}
+
+.map_radius-help {
+	position: relative;
+}
+
+.map_radius-help:hover::after {
+	background: white;
+	border: 1px black solid;
+	border-radius: 10px;
+	content: 'Укажите радиус и нажмите Enter';
+	margin: 5px;
+	padding: 5px;
+	position: absolute;
+	width: 125px;
+	z-index: 9999;
+}
+
 .map_radius-preset {
 	display: flex;
 	justify-content: space-around;
+	margin: 10px 0;
+}
+
+.map_fillOpacity, .map_strokeOpacity {
+	display: block;
+	margin: 10px, 0;
 }
 
 .text-underline {
 	border-bottom: 1px black solid;
+}
+
+.text-only-on-mobile {
+	display: none;
+}
+
+.footer__copyrights-text {
+	font-size: 10px;
+	text-align: center;
 }
 
 
@@ -98,3 +185,62 @@ header h1 {
 	border-radius: 15px;
 }
 
+@media (max-width: 1178px) {
+	.metro-map__yandex {
+		height: 700px;
+		width: 100%;
+	}
+	.metro-map {
+		display: block;
+		margin: 0 auto;
+	}
+	.control-panel {
+		background: none;
+		margin: 10px 0;
+		width: 100%;
+	}
+	.text-only-on-mobile {
+		display: block;
+	}
+	.text-only-on-pc {
+		display: none;
+	}
+}
+
+@media (max-width: 767px) {
+	header h1 {
+		margin-bottom: 80px;
+	}
+	header h1:after {
+		left: 50%;
+		position: absolute;
+		top: 100%;
+		transform: translateX(-50%);
+	}
+	.metro-map {
+		display: block;
+		margin: 0 auto;
+	}
+	.metro-map__yandex {
+		height: 400px;
+		width: 100%;
+	}
+	.control-panel {
+		background: none;
+		margin: 10px 0;
+		width: 100%;
+	}
+	.cp-tab :checked + .cp-tab-title {
+		background: #f5f5f5;
+	}
+
+	.cp-tab-content {
+		background: #f5f5f5;
+	}
+	.text-only-on-mobile {
+		display: block;
+	}
+	.text-only-on-pc {
+		display: none;
+	}
+}

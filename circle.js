@@ -8,14 +8,6 @@ function init() {
         }, {
             searchControlProvider: 'yandex#search'
         }),
-
-    	objectManager = new ymaps.ObjectManager();
-	 $.getJSON('moscowline.geojson').done(function (geoJson) {
-            // Добавляем описание объектов в формате JSON в менеджер объектов.
-            objectManager.add(geoJson);
-            // Добавляем объекты на карту.
-            myMap.geoObjects.add(objectManager);
-        });
     /*
     Координаты и наименования станций Московского метрополитена. Названия записаны с сокращением на латинском алфавите.
     Координаты и названия идут по порядку соответственно друг с другом.
@@ -167,13 +159,17 @@ function init() {
 	/* Variables */
 	let radius = 900;
 	let dotsClicked = 0;
+	let draggableCircle = 0;
+    let fillOpacityCircle = 0.3;
+    let strokeOpacityCircle = 0.5;
 	let collections = [SOKLCollection, ZLCollection, APLCollection, FLCollection, FL4ACollection, KLCollection, KRLCollection, TKLCollection, KSLCollection, STLCollection, LDLCollection, BKLCollection, ButLCollection, NekLCollection, MCKCollection, MCD1Collection, MCD2Collection];
     let stationCoords = [SOKLCoords, ZLCoords, APLCoords, FLCoords, FL4ACoords, KLCoords, KRLCoords, TKLCoords, KSLCoords, STLCoords, LDLCoords, BKLCoords, ButLCoords, NekLCoords, MCKCoords, MCD1Coords, MCD2Coords];
     let stationNames = [SOKLName, ZLName, APLName, FLName, FL4AName, KLName, KRLName, TKLName, KSLName, STLName, LDLName, BKLName, ButLName, NekLName, MCKName, MCD1Name, MCD2Name];
     let dotsCollection = [];
-	/*
-	Here goes some functions what should be placed somewhere outside this .js before I release it to public.
-	*/
+
+	/* 
+    Functions 
+    */
 
     const drawDots = (collection, coords, name) => {
         let collect = collection;
@@ -191,7 +187,7 @@ function init() {
         collect.add(new ymaps.Circle(
         	[coords[i], radius],
         	{hintContent: `Радиус в ${radius} метрах от станции «${name[i]}».`},
-        	{fillColor: circleColour, fillOpacity: 0.3, strokeColor: circleColour, strokeOpacity: 0.5, strokeWidth: 5}
+        	{fillColor: circleColour, fillOpacity: fillOpacityCircle, strokeColor: circleColour, strokeOpacity: strokeOpacityCircle, strokeWidth: 5}
         	));
         myMap.geoObjects.add(collect);
     }};
@@ -227,38 +223,60 @@ function init() {
 			drawAllCircle(this.innerHTML);
 		});
 	}
-	//finish it off
-	document.querySelector('.map_dots').onclick = function () {
-		if (dotsClicked === 0) {
-			drawAllDots();
-		} else {
-			dotsClicked = 0;
-			document.querySelector('.map_dots').innerHTML = 'Добавить точки';
+    // These two event listeners below might be worth to unite in one function
+    document.querySelector('.map_fillOpacity').onchange = function () {
+        let value = fillOpacityCircle;
+        let newValue = document.querySelector('.map_fillOpacity').value;
+        if (newValue > 0.09 && newValue <= 1.0) {
+            fillOpacityCircle = newValue;
+            drawAllCircle(radius);
+        } else {
+            document.querySelector('.map_fillOpacity').value = value;
+        }
+    }
+
+    document.querySelector('.map_strokeOpacity').onchange = function () {
+        let value = strokeOpacityCircle;
+        let newValue = document.querySelector('.map_strokeOpacity').value;
+        if (newValue > 0.09 && newValue <= 1.0) {
+            strokeOpacityCircle = newValue;
+            drawAllCircle(radius);
+        } else {
+            document.querySelector('.map_strokeOpacity').value = value;
+        }
+    }
+
+	document.querySelector('.map_draggableCircle').onclick = function () {
+		if (draggableCircle === 0) {
 			for (let i = 0, l = collections.length; i < l; i++) {
-    			collections[i].removeAll();
+    			collections[i].options.set('draggable', true);
     		};
+    		draggableCircle = 1;
+    		document.querySelector('.map_draggableCircle').innerHTML = 'Зафиксировать круги';
+    	} else {
+    		for (let i = 0, l = collections.length; i < l; i++) {
+    			collections[i].options.set('draggable', false);
+    		};
+    		draggableCircle = 0;
+    		document.querySelector('.map_draggableCircle').innerHTML = 'Перетаскивать круги';
 		}
-	 };
+	}
+
+    document.querySelector('.map_dots').onclick = function () {
+        if (dotsClicked === 0) {
+            drawAllDots();
+        } else {
+            dotsClicked = 0;
+            document.querySelector('.map_dots').innerHTML = 'Отметить станции точками';
+            for (let i = 0, l = collections.length; i < l; i++) {
+                collections[i].removeAll();
+            };
+        }
+    };
+
 
 // start up
-	drawCircle(SOKLCollection, SOKLCoords, SOKLName, radius);
-	drawCircle(ZLCollection, ZLCoords, ZLName, radius);
-	drawCircle(APLCollection, APLCoords, APLName, radius);
-	drawCircle(FLCollection, FLCoords, FLName, radius);
-	drawCircle(FL4ACollection, FL4ACoords, FL4AName, radius);
-	drawCircle(KLCollection, KLCoords, KLName, radius);
-	drawCircle(KRLCollection, KRLCoords, KRLName, radius);
-	drawCircle(TKLCollection, TKLCoords, TKLName, radius);
-	drawCircle(KSLCollection, KSLCoords, KSLName, radius);
-	drawCircle(STLCollection, STLCoords, STLName, radius);
-	drawCircle(LDLCollection, LDLCoords, LDLName, radius);
-	drawCircle(BKLCollection, BKLCoords, BKLName, radius);
-	drawCircle(ButLCollection, ButLCoords, ButLName, radius);
-	drawCircle(NekLCollection, NekLCoords, NekLName, radius);
-// Линии МЦК и МЦД.
-	drawCircle(MCKCollection, MCKCoords, MCKName, radius);
-	drawCircle(MCD1Collection, MCD1Coords, MCD1Name, radius);
-	drawCircle(MCD2Collection, MCD2Coords, MCD2Name, radius);
+	drawAllCircle(radius);
 }
 
 
