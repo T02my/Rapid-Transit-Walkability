@@ -15,6 +15,7 @@ function init() {
 
     // Сокольническая линия (СокЛ/SOKL)
     	SOKLCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Сокольническая',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#EF161E'
         }),
@@ -23,6 +24,7 @@ function init() {
     
     // Замоскворецкая линия (ЗЛ/ZL)
     	ZLCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Замоскворецкая',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#2DBE2C'
 		}),
@@ -31,6 +33,7 @@ function init() {
 
 	// Арбатско-Покровская линия (АПЛ/APL)
         APLCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Арбатско-Покровская',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#0078BE'
         }),
@@ -39,6 +42,7 @@ function init() {
 
     // Филёвская линия (ФЛ/FL). Без ответвления в Москва-сити.
         FLCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Филёвская',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#00BEFD'
         }),
@@ -47,6 +51,7 @@ function init() {
 
 	// Филёвская линия 4А (ФЛ4А/FL4A). Ответвление в Москва-Сити.
         FL4ACollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Филёвская',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#00BEFD'
         }),
@@ -55,14 +60,16 @@ function init() {
 
 	// Кольцевая линия (КЛ/KL)
         KLCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Кольцевая',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#8D5B2D'
         }),
         KLCoords = [[55.729137962729816, 37.62263413499074], [55.73158385576803, 37.63608809540941], [55.742461371956225, 37.65338297913736], [55.75736534262791, 37.65989538262548], [55.77461606536855, 37.65583988259472], [55.779616857617874, 37.63350244591874], [55.77954429932074, 37.60165926049384], [55.77604924815585, 37.58363481591362], [55.76031157314186, 37.57718678544177], [55.743907845967634, 37.56826039384017], [55.73532504762005, 37.592593394023275], [55.72923483242469, 37.611218653422654]],
         KLName = ['Добрынинская', 'Павелецкая', 'Таганская', 'Курская', 'Комсомольская', 'Проспект Мира', 'Новослободская', 'Белорусская', 'Краснопресненская', 'Киевская', 'Парк Культуры', 'Октябрьская'],
  	
- 	// Калужско-Рижская-Тимирязевская линия (КРЛ/KRL)
+ 	// Калужско-Рижская линия (КРЛ/KRL)
         KRLCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Калужско-Рижская',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#ED9121'
         }),
@@ -71,6 +78,7 @@ function init() {
 
     // Таганско-Краснопресненская линия (ТКЛ/TKL)
         TKLCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Таганско-Краснопресненская',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#800080'
         }),
@@ -79,6 +87,7 @@ function init() {
 
 	// Калининско-Солнцевская линия (КСЛ/KSL)
         KSLCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Калининско-Солнцевская',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#FFD702'
         }),
@@ -87,6 +96,7 @@ function init() {
 
 	// Серпуховско-Тимирязевская линия (СТЛ/STL)
         STLCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Серпуховско-Тимирязевская',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#999999'
         }),
@@ -95,6 +105,7 @@ function init() {
 
     // Люблинско-Дмитровская линия (ЛДЛ/LDL)
         LDLCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Люблинско-Дмитровская',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#99CC00'
         }),
@@ -103,6 +114,7 @@ function init() {
 
     // Большая кольцевая линия (БКЛ/BKL)
         BKLCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Большая кольцевая',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#82C0C0'
         }),
@@ -111,14 +123,27 @@ function init() {
 	
 	// Бутовская линия (БутЛ/ButL)
         ButLCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Бутовская',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#A1B3D4'
         }),
         ButLCoords = [[55.60039576214366, 37.55637613603095], [55.58195336941205, 37.57725652288619], [55.56912211850714, 37.576795182935506], [55.548063910957744, 37.55472060274279], [55.54501339259735, 37.541567049733615], [55.54209647325122, 37.53207739423889], [55.53771916565097, 37.514991722814]],
         ButLName = ['Битцевский парк', 'Лесопарковая', 'Улица Старокачаловская', 'Улица Скобелевская', 'Бульвар Адмирала Ушакова', 'Улица Горчакова', 'Бунинская линия'];
 
-	// Некрасовская линия (НекЛ/NekL)
+    /*
+	Координаты и наименования станций Московского центрального кольца (МЦК/MCK).
+    */
+        MCKCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Московское центральное кольцо',
+            preset: 'islands#rapidTransitIcon',
+            iconColor: '#B12A29'
+        }),
+        MCKCoords = [[55.84558866904282, 37.63968225548853], [55.839153509280855, 37.66868229935755], [55.82939006628277, 37.70212408135518], [55.81640455744306, 37.73860212395755], [55.80308838251133, 37.74615522454343], [55.7886553481114, 37.74302240441397], [55.769947271161925, 37.74540420601917], [55.758865709346566, 37.746176682215456], [55.746425429728724, 37.736799679499356], [55.731650449151566, 37.72780891488144], [55.724070114810154, 37.71669384072367], [55.71789940657175, 37.695482931833816], [55.71221834048928, 37.67613884041839], [55.70540360048304, 37.6612901313113], [55.69873308626959, 37.64930602143308], [55.689728199130144, 37.61699076722157], [55.689900923458495, 37.60539825985908], [55.70699684218395, 37.586295567254936], [55.72057612420165, 37.56115790436729], [55.73953194447887, 37.5342392546937], [55.747605490667766, 37.53187891076059], [55.75687528989134, 37.52608533928839], [55.77716189298641, 37.507309876184095], [55.78919335854063, 37.504177056054715], [55.79806644042626, 37.49984260628664], [55.81366798513031, 37.48688217232657], [55.82518082165152, 37.49471422264997], [55.840529974100455, 37.52134319374977], [55.84783408196566, 37.55318637917451], [55.8487877397655, 37.57206913063931], [55.8474477834874, 37.590329609612695]];
+        MCKName = ['Ботанический сад', 'Ростокино', 'Белокаменная', 'Бульвар Рокоссовского', 'Локомотив', 'Измайлово', 'Соколиная Гора', 'Шоссе Энтузиастов', 'Андроновка', 'Нижегородская', 'Новохохловская', 'Угрешская', 'Дубровка', 'Автозаводская', 'ЗИЛ', 'Верхние Котлы', 'Крымская', 'Площадь Гагарина', 'Лужники', 'Кутузовская', 'Деловой центр', 'Шелепиха', 'Хорошёво', 'Зорге', 'Панфиловская', 'Стрешнево', 'Балтийская', 'Коптево', 'Лихоборы', 'Окружная', 'Владыкино'];
+
+    // Некрасовская линия (НекЛ/NekL)
         NekLCollection = new ymaps.GeoObjectCollection(null, {
+            name: 'Некрасовская',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#DE64A1'
         }),
@@ -126,20 +151,10 @@ function init() {
         NekLName = ['Некрасовка', 'Лухмановская', 'Улица Дмитриевского', 'Косино', 'Юго-Восточная', 'Окская', 'Стахановская', 'Нижегородская', 'Авиамоторная', 'Лефортово', 'Электрозаводская'];
 
     /*
-	Координаты и наименования станций Московского центрального кольца (МЦК/MCK).
-    */
-        MCKCollection = new ymaps.GeoObjectCollection(null, {
-            preset: 'islands#rapidTransitIcon',
-            iconColor: '#B12A29'
-        }),
-        MCKCoords = [[55.84558866904282, 37.63968225548853], [55.839153509280855, 37.66868229935755], [55.82939006628277, 37.70212408135518], [55.81640455744306, 37.73860212395755], [55.80308838251133, 37.74615522454343], [55.7886553481114, 37.74302240441397], [55.769947271161925, 37.74540420601917], [55.758865709346566, 37.746176682215456], [55.746425429728724, 37.736799679499356], [55.731650449151566, 37.72780891488144], [55.724070114810154, 37.71669384072367], [55.71789940657175, 37.695482931833816], [55.71221834048928, 37.67613884041839], [55.70540360048304, 37.6612901313113], [55.69873308626959, 37.64930602143308], [55.689728199130144, 37.61699076722157], [55.689900923458495, 37.60539825985908], [55.70699684218395, 37.586295567254936], [55.72057612420165, 37.56115790436729], [55.73953194447887, 37.5342392546937], [55.747605490667766, 37.53187891076059], [55.75687528989134, 37.52608533928839], [55.77716189298641, 37.507309876184095], [55.78919335854063, 37.504177056054715], [55.79806644042626, 37.49984260628664], [55.81366798513031, 37.48688217232657], [55.82518082165152, 37.49471422264997], [55.840529974100455, 37.52134319374977], [55.84783408196566, 37.55318637917451], [55.8487877397655, 37.57206913063931], [55.8474477834874, 37.590329609612695]];
-        MCKName = ['Ботанический сад', 'Ростокино', 'Белокаменная', 'Бульвар Рокоссовского', 'Локомотив', 'Измайлово', 'Соколиная Гора', 'Шоссе Энтузиастов', 'Андроновка', 'Нижегородская', 'Новохохловская', 'Угрешская', 'Дубровка', 'Автозаводская', 'ЗИЛ', 'Верхние Котлы', 'Крымская', 'Площадь Гагарина', 'Лужники', 'Кутузовская', 'Деловой центр', 'Шелепиха', 'Хорошёво', 'Зорге', 'Панфиловская', 'Стрешнево', 'Балтийская', 'Коптево', 'Лихоборы', 'Окружная', 'Владыкино'];
-
-
-    /*
 	Координаты и наименования станций Белорусско-Савеловского Московского центрального диаметра (МЦД1/MCD1).
     */
 		MCD1Collection = new ymaps.GeoObjectCollection(null, {
+            name: 'Белорусско-Савёловский диаметр',
             preset: 'islands#rapidTransitIcon',
             iconColor: '#F6A700'
         }),
@@ -150,8 +165,9 @@ function init() {
 	Координаты и наименования станций Курско-Рижского Московского центрального диаметра (МЦД1/MCD1).
     */
     	MCD2Collection = new ymaps.GeoObjectCollection(null, {
-        preset: 'islands#rapidTransitIcon',
-        iconColor: '#E83F83'
+            name: 'Курско-Рижский диаметр',
+            preset: 'islands#rapidTransitIcon',
+            iconColor: '#E83F83'
         }),
         MCD2Coords = [[55.431397736421026, 37.56551917623395], [55.47047139319212, 37.55547698568209], [55.4860339266038, 37.55509074758396], [55.51017592659006, 37.56215032171103], [55.54166484766123, 37.57069047521437], [55.571183242930445, 37.61139567922419], [55.58970751721943, 37.615043483484406], [55.60290253015007, 37.63195212911425], [55.61850965820086, 37.66883786748693], [55.64037950001374, 37.689142189729566], [55.64986900538339, 37.701394520509616], [55.66140316798858, 37.71701570581223], [55.67409499049422, 37.728098593461716], [55.685031017958046, 37.733881436097754], [55.70778435504339, 37.72949334214926], [55.72465140959009, 37.71346446107611], [55.73419909806292, 37.70195241998418], [55.7456447567161, 37.68835898469667], [55.74831351336196, 37.682275734650894], [55.7582667820019, 37.66236301492429], [55.77607343874481, 37.651709280716865], [55.79405325729708, 37.63859864305195], [55.80794653935017, 37.578345499740685], [55.80555983558271, 37.55321856568949], [55.81551655430306, 37.526525221573145], [55.815299080466396, 37.48991843293778], [55.81418752858009, 37.47640009950268], [55.82676009901212, 37.44205709527494], [55.83313391816614, 37.399002276168694], [55.83217987465946, 37.3829090220793], [55.82246903184325, 37.36091490815718], [55.8152114863058, 37.34124895165994], [55.81435365907324, 37.30395551751684], [55.822749883201766, 37.24855180810502], [55.83240027271815, 37.21887584756421], [55.8416377544333, 37.184822521911094]],
         MCD2Name = ['Подольск', 'Силикатная', 'Остафьево', 'Щербинка', 'Бутово', 'Битца', 'Красный Строитель', 'Покровское', 'Царицыно', 'Москворечье', 'Курьяново', 'Перерва', 'Депо', 'Люблино', 'Текстильщики', 'Новохохловская', 'Калитники', 'Москва-Товарная', 'Серп и Молот', 'Курская', 'Каланчёвская', 'Рижская', 'Дмитровская', 'Гражданская', 'Красный Балтиец', 'Стрешнево', 'Покровское-Стрешнево', 'Тушинская', 'Трикотожная', 'Волоколамская', 'Пенягино', 'Павшино', 'Красногорская', 'Опалиха', 'Аникеевка', 'Нахабино'];
@@ -162,11 +178,12 @@ function init() {
 	let draggableCircle = 0;
     let fillOpacityCircle = 0.3;
     let strokeOpacityCircle = 0.5;
-	let collections = [SOKLCollection, ZLCollection, APLCollection, FLCollection, FL4ACollection, KLCollection, KRLCollection, TKLCollection, KSLCollection, STLCollection, LDLCollection, BKLCollection, ButLCollection, NekLCollection, MCKCollection, MCD1Collection, MCD2Collection];
-    let stationCoords = [SOKLCoords, ZLCoords, APLCoords, FLCoords, FL4ACoords, KLCoords, KRLCoords, TKLCoords, KSLCoords, STLCoords, LDLCoords, BKLCoords, ButLCoords, NekLCoords, MCKCoords, MCD1Coords, MCD2Coords];
-    let stationNames = [SOKLName, ZLName, APLName, FLName, FL4AName, KLName, KRLName, TKLName, KSLName, STLName, LDLName, BKLName, ButLName, NekLName, MCKName, MCD1Name, MCD2Name];
+	let collections = [SOKLCollection, ZLCollection, APLCollection, FLCollection, FL4ACollection, KLCollection, KRLCollection, TKLCollection, KSLCollection, STLCollection, LDLCollection, BKLCollection, ButLCollection, MCKCollection, NekLCollection, MCD1Collection, MCD2Collection];
+    let stationCoords = [SOKLCoords, ZLCoords, APLCoords, FLCoords, FL4ACoords, KLCoords, KRLCoords, TKLCoords, KSLCoords, STLCoords, LDLCoords, BKLCoords, ButLCoords, MCKCoords, NekLCoords, MCD1Coords, MCD2Coords];
+    let stationNames = [SOKLName, ZLName, APLName, FLName, FL4AName, KLName, KRLName, TKLName, KSLName, STLName, LDLName, BKLName, ButLName, MCKName, NekLName, MCD1Name, MCD2Name];
     let dotsCollection = [];
-
+    let lineCollection = [];
+    
 	/* 
     Functions 
     */
@@ -195,6 +212,7 @@ function init() {
     const drawAllCircle = (radius) => {
     	for (let i = 0; i < collections.length; i++) {
     		collections[i].removeAll();
+            lineCollection[i] = 1;
     		drawCircle(collections[i], stationCoords[i], stationNames[i], radius);
     	};
 		document.querySelector('.map_radius').value = radius;
@@ -207,6 +225,67 @@ function init() {
 		dotsClicked = 1;
 		document.querySelector('.map_dots').innerHTML = 'Убрать точки и круги';
     }
+
+    const addLinesSelectors = () => {
+        for (let i = 0, l = collections.length; i < l; i++) {
+            // the next code determines what "i" is it and puts the right number Moscow's rapid transport system.
+            var line = (num) => {
+                switch(num) {
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                        return num + 1;
+                    case 4:
+                        return '4A';
+                    case 13:
+                    case 14:
+                        return num + 1;
+                    case 15:
+                        return 'D1';
+                    case 16:
+                        return 'D2';
+                    default:
+                        return num;
+                }
+
+            }
+            const lineName = (num) => {
+                if (num === 13 || num === 15 || num === 16) {
+                    return collections[i].options._options.name;
+                } else {
+                    return collections[i].options._options.name + ' линия';
+                }
+            }
+            var metroline = 
+            `
+                <div class="map_metro-line">
+                    <div style="background: ${collections[i].options._options.iconColor}" class="metro-line__circle">${line(i)}</div>
+                    <div style="background: ${collections[i].options._options.iconColor}" class="metro-line__line"></div>
+                    <div class="metro-line__name">${lineName(i)}</div>
+                </div>
+            `;
+            document.querySelector('.cp-tab3-content__lines').insertAdjacentHTML('beforeend', metroline);
+        };
+        addRemoveLine();
+    }
+
+    const addRemoveLine = () => {
+        for (let i = 0, l = collections.length; i < l; i++) {
+            document.querySelectorAll('.map_metro-line')[i].onclick = function () {
+                if (lineCollection[i] === 1) {
+                   collections[i].removeAll();
+                   lineCollection[i] = 0;
+                   document.querySelectorAll('.map_metro-line')[i].classList.add('filter-gray')
+                } else  {
+                    drawCircle(collections[i], stationCoords[i], stationNames[i], radius);
+                    lineCollection[i] = 1;
+                    document.querySelectorAll('.map_metro-line')[i].classList.remove('filter-gray')
+                }
+            }
+        }  
+    }
+
 
     /*
     Event listeners:
@@ -267,7 +346,7 @@ function init() {
             drawAllDots();
         } else {
             dotsClicked = 0;
-            document.querySelector('.map_dots').innerHTML = 'Отметить станции точками   ';
+            document.querySelector('.map_dots').innerHTML = 'Отметить станции точками';
             for (let i = 0, l = collections.length; i < l; i++) {
                 collections[i].removeAll();
             };
@@ -275,9 +354,7 @@ function init() {
     };
 
 
-// start up
+    // start up
 	drawAllCircle(radius);
+    addLinesSelectors();
 }
-
-
-
